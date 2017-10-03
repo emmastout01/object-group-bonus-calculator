@@ -6,7 +6,43 @@ var robert = { name: "Robert", employeeNumber: "26835", annualSalary: "66000", r
 var mayella = { name: "Mayella", employeeNumber: "89068", annualSalary: "35000", reviewRating: 2 };
 
 var employees = [ atticus, jem, boo, scout, robert, mayella ];
+console.log(employees);
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
-console.log(employees);
+var Employee = function(name, employeeNumber, annualSalary, reviewRating) {
+  this.name = name;
+  this.employeeNumber = employeeNumber;
+  this.annualSalary = annualSalary;
+  this.reviewRating = reviewRating;
+  this.bonusPercentage = function() {
+  var percentAfterNumber = 0;
+  if (employeeNumber.length==4){
+    percentAfterNumber = 0.05;
+  }
+  console.log('bonusPercentage');
+  return percentAfterNumber;
+  };
+  this.totalCompensation = function() {
+console.log('totalCompensation');
+  };
+  this.totalBonus = function (){
+console.log('totalBonus');
+  };
+
+};
+var testEmployee = new Employee ("Atticus", '24054','47000',3);
+console.log(testEmployee.bonusPercentage());
+/*
+function updateEmployees(employeesToUpgrade) {
+  var upgradedEmployees = [];
+  for(i=0; i < employeesToUpgrade.length; i++);{
+    var oldEmployee = employeesToUpgrade[i];
+    var upgradedEmployee = new Employee (oldEmployee.name, oldEmployee.employeeNumber, oldEmployee.annualSalary, oldEmployee.reviewRating);
+    upgradedEmployees.push(upgradedEmployee);
+  }
+  return upgradedEmployees;
+}
+
+console.log(updateEmployees(employees));
+*/
