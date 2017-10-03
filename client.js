@@ -20,29 +20,72 @@ var Employee = function(name, employeeNumber, annualSalary, reviewRating) {
   if (employeeNumber.length==4){
     percentAfterNumber = 0.05;
   }
-  console.log('bonusPercentage');
-  return percentAfterNumber;
-  };
+  else {
+    percentAfterNumber = 0;
+  }
+  var percentAfterRatings;
+  if (reviewRating <= 2) {
+    percentAfterRatings = percentAfterNumber;
+  }
+
+  else if (reviewRating === 3){
+    percentAfterRatings = percentAfterNumber + 0.04;
+  }
+  else if (reviewRating === 4){
+    percentAfterRatings = percentAfterNumber + 0.06;
+  }
+  else if (reviewRating === 5){
+    percentAfterRatings = percentAfterNumber + 0.10;
+    }
+    else {
+      console.log('Not a thing');
+    }
+  var percentAfterSalary;
+  var Salary = parseInt(annualSalary);
+  if (Salary > 65000){
+    percentAfterSalary = percentAfterRatings - 0.01;
+  }
+  else {
+    percentAfterSalary = percentAfterRatings;
+  }
+  var finalPercentage = percentAfterSalary;
+ if (percentAfterSalary > 0.13){
+   finalPercentage = 0.13;
+ }
+ else if(percentAfterSalary < 0){
+   finalPercentage = 0;
+ }
+ else {
+   finalPercentage = percentAfterSalary;
+ }
+return finalPercentage;
+};
   this.totalCompensation = function() {
-console.log('totalCompensation');
+    var totalCompensation;
+    totalCompensation = annualSalary * (1 + this.bonusPercentage());
+    return totalCompensation;
   };
   this.totalBonus = function (){
-console.log('totalBonus');
+    var totalBonus;
+    totalBonus = annualSalary * this.bonusPercentage();
+    return totalBonus;
   };
 
 };
-var testEmployee = new Employee ("Atticus", '24054','47000',3);
-console.log(testEmployee.bonusPercentage());
-/*
+
+
+
+
+
 function updateEmployees(employeesToUpgrade) {
   var upgradedEmployees = [];
-  for(i=0; i < employeesToUpgrade.length; i++);{
+  for(var i=0; i < employeesToUpgrade.length; i++){
     var oldEmployee = employeesToUpgrade[i];
-    var upgradedEmployee = new Employee (oldEmployee.name, oldEmployee.employeeNumber, oldEmployee.annualSalary, oldEmployee.reviewRating);
+    console.log(oldEmployee);
+    var upgradedEmployee = new Employee(oldEmployee.name, oldEmployee.employeeNumber, oldEmployee.annualSalary, oldEmployee.reviewRating);
     upgradedEmployees.push(upgradedEmployee);
   }
   return upgradedEmployees;
 }
-
-console.log(updateEmployees(employees));
-*/
+var awesomeEmployees = updateEmployees(employees);
+console.log(awesomeEmployees);
